@@ -8,7 +8,7 @@
 2. 通过反射机制访问java对象的属性，方法，构造方法等  
 
 ### 反射机制的应用场景
-Jdbc 加载驱动、Spring IOC、其他框架...    
+Jdbc 加载驱动、Spring IOC，Hibernate、Mybatis、JPA等开源框架...    
  
 ### 反射机制获取类有三种方式
 ```java
