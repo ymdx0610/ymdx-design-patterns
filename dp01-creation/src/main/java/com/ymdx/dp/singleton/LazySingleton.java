@@ -1,4 +1,6 @@
-package com.ymdx.dp01;
+package com.ymdx.dp.singleton;
+
+import java.lang.reflect.Constructor;
 
 /**
  * @ClassName: LazySingleton
@@ -14,8 +16,18 @@ package com.ymdx.dp01;
 public class LazySingleton {
 
     private static LazySingleton instance = null;
+    private static boolean flag = false;
 
-    private LazySingleton(){}
+    private LazySingleton(){
+        // 单例防止反射漏洞攻击
+        synchronized (LazySingleton.class){
+            if (!flag){
+                flag = true;
+            }else {
+                throw new RuntimeException("单实例对象不允许被重复创建！");
+            }
+        }
+    }
 
     public static synchronized LazySingleton getInstance(){
         if (instance == null){
@@ -24,10 +36,16 @@ public class LazySingleton {
         return instance;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         LazySingleton instance1 = LazySingleton.getInstance();
         LazySingleton instance2 = LazySingleton.getInstance();
         System.out.println(instance1 == instance2);
+
+//        Class<?> cls = Class.forName("com.ymdx.dp.singleton.LazySingleton");
+//        Constructor<?> constructor = cls.getDeclaredConstructor();
+//        constructor.setAccessible(true);
+//        LazySingleton instance3 = (LazySingleton) constructor.newInstance();
+
     }
 
 }

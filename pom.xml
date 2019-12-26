@@ -10,7 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>ymdx-reflection</module>
-        <module>dp01-singleton</module>
+        <module>dp01-creation</module>
+        <module>dp02-structure</module>
+        <module>dp03-behavior</module>
     </modules>
 
     <properties>

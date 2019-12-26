@@ -1,4 +1,4 @@
-package com.ymdx.dp01;
+package com.ymdx.dp.singleton;
 
 /**
  * @ClassName: StaticInnerClassSingleton

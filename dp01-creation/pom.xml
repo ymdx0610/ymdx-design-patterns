@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dp01-singleton</artifactId>
+    <artifactId>dp01-creation</artifactId>
 
 
 </project>
