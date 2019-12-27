@@ -267,20 +267,24 @@ SpringAOP、事务原理、日志打印、权限控制、远程调用、安全�
 
 #### JDK动态代理
 - 原理  
-是根据类加载器和接口创建代理类（此代理类是接口的实现类，所以必须使用接口 面向接口生成代理，位于java.lang.reflect包下） 
+是根据类加载器和接口创建代理类（此代理类是接口的实现类，所以必须使用接口，面向接口生成代理，位于java.lang.reflect包下） 
 
 - 实现方式 
-1. 通过实现InvocationHandler接口创建自己的调用处理器 IvocationHandler handler = new InvocationHandlerImpl(…);   
-2. 通过为Proxy类指定ClassLoader对象和一组interface创建动态代理类Class clazz = Proxy.getProxyClass(classLoader,new Class[]{…});   
-3. 通过反射机制获取动态代理类的构造函数，其参数类型是调用处理器接口类型Constructor constructor = clazz.getConstructor(new Class[]{InvocationHandler.class});   
-4. 通过构造函数创建代理类实例，此时需将调用处理器对象作为参数被传入Interface Proxy = (Interface)constructor.newInstance(new Object[] (handler));  
+1. 通过实现InvocationHandler接口创建自己的调用处理器   
+InvocationHandler handler = new InvocationHandlerImpl(…);   
+2. 通过为Proxy类指定ClassLoader对象和一组interface创建动态代理类  
+Class clazz = Proxy.getProxyClass(classLoader, new Class[]{…});   
+3. 通过反射机制获取动态代理类的构造函数，其参数类型是调用处理器接口类型  
+Constructor constructor = clazz.getConstructor(new Class[]{InvocationHandler.class});   
+4. 通过构造函数创建代理类实例，此时需将调用处理器对象作为参数被传入  
+Interface Proxy = (Interface)constructor.newInstance(new Object[] (handler));  
 
 - 缺点  
 jdk动态代理，必须是面向接口，目标业务类必须实现接口  
 
 #### CGLIB动态代理
-使用cglib[Code Generation Library]实现动态代理，并不要求委托类必须实现接口，底层采用asm字节码生成框架生成代理类的字节码  
-原理：利用asm开源包，对代理对象类的class文件加载进来，通过修改其字节码生成子类来处理。  
+使用cglib[Code Generation Library]实现动态代理，并不要求委托类必须实现接口，底层采用asm字节码生成框架，生成代理类的字节码  
+原理：利用asm开源包，将代理对象类的class文件加载进来，通过修改其字节码生成子类来处理。  
 
 #### CGLIB动态代理与JDK动态区别  
 java动态代理是利用反射机制生成一个实现代理接口的匿名类，在调用具体方法前调用InvokeHandler来处理。  
@@ -294,6 +298,7 @@ CGLIB是针对类实现代理，主要是对指定的类生成一个子类，覆
 因为是继承，所以该类或方法最好不要声明成final，final可以阻止继承和多态。  
 
 <hr>
+
 
 
 
