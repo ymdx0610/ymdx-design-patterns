@@ -130,7 +130,7 @@
 ### 单例模式  
 保证一个类只有一个实例，并且提供一个访问该全局访问点。  
 
-> 示例项目：ymdx-design-patterns -> dp01-creation -> singleton
+> 示例代码：ymdx-design-patterns -> dp01-creation -> singleton
 
 #### 应用场景
 1. Windows的Task Manager（任务管理器）就是很典型的单例模式（这个很熟悉吧），想想看，是不是呢，你能打开两个windows task manager吗？不信你自己试试看哦～   
@@ -230,6 +230,8 @@ private Singleton() {
 ### 代理模式
 代理模式的定义：由于某些原因需要给某对象提供一个代理以控制对该对象的访问。这时，访问对象不适合或者不能直接引用目标对象，代理对象作为访问对象和目标对象之间的中介。  
 
+> 示例代码：ymdx-design-patterns -> dp02-structure -> proxy   
+
 #### 代理模式的优缺点
 - 优点  
 1. 代理模式在客户端与目标对象之间起到一个中介作用和保护目标对象的作用；  
@@ -283,7 +285,7 @@ Interface Proxy = (Interface)constructor.newInstance(new Object[] (handler));
 jdk动态代理，必须是面向接口，目标业务类必须实现接口  
 
 #### CGLIB动态代理
-使用cglib[Code Generation Library]实现动态代理，并不要求委托类必须实现接口，底层采用asm字节码生成框架，生成代理类的字节码  
+使用cglib[Code Generation Library]实现动态代理，并不要求委托类必须实现接口，底层采用asm字节码生成框架生成代理类的字节码  
 原理：利用asm开源包，将代理对象类的class文件加载进来，通过修改其字节码生成子类来处理。  
 
 #### CGLIB动态代理与JDK动态区别  
@@ -293,11 +295,13 @@ Spring中，
 1、如果目标对象实现了接口，默认情况下会采用JDK的动态代理实现AOP   
 2、如果目标对象实现了接口，可以强制使用CGLIB实现AOP   
 3、如果目标对象没有实现了接口，必须采用CGLIB库，spring会自动在JDK动态代理和CGLIB之间转换  
+
 JDK动态代理只能对实现了接口的类生成代理，而不能针对类。  
 CGLIB是针对类实现代理，主要是对指定的类生成一个子类，覆盖其中的方法。  
 因为是继承，所以该类或方法最好不要声明成final，final可以阻止继承和多态。  
 
 <hr>
+
 
 
 
