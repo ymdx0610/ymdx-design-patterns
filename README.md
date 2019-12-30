@@ -12,51 +12,10 @@
 创建型模式是用来创建对象的模式，抽象了实例化的过程，帮助一个系统独立于其关联对象的创建、组合和表示方式。
 
 - 单例模式（Singleton Pattern）：
-一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。
-
-（1）饿汉式单例类：类加载时，就进行对象实例化；
-![IMAGE](quiver-image-url/3D3AD876672144720BBC2C51241523BC.jpg =351x95)
-```
-public class HungrySingleton {
-
-    private static HungrySingleton instance = new HungrySingleton();
-
-    // 构造方法私有，保证外界无法直接实例化
-    private HungrySingleton(){}
-
-    // 通过该方法获得实例对象
-    public static HungrySingleton getInstance(){
-        return instance;
-    }
-
-}
-```
-（2）懒汉式单例类：第一次引用类时，才进行对象实例化。
-![IMAGE](quiver-image-url/A2A82E906FB0B296C0F65E8A7EF8F8E0.jpg =349x85)
-
-```
-public class LazySingleton {
-
-    private LazySingleton instance = null;
-
-    // 构造方法私有，保证外界无法直接实例化
-    private LazySingleton(){}
-
-    // 方法同步
-    public synchronized LazySingleton getInstance(){
-        if(instance == null){
-            instance = new LazySingleton();
-        }
-        return instance;
-    }
-
-}
-```
+一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。  
 
 - 工厂方法模式（Factory Method Pattern）：
   在工厂方法模式中，工厂类成为了抽象类，实际的创建工作将由其具体子类来完成。工厂方法的用意是定义一个创建产品对象的工厂接口，将实际创建工作推迟到子类中去，强调的是“单个对象”的变化。
-
-
 
 - 抽象工厂模式（Abstract Factory Pattern）：
   抽象工厂是所有工厂模式中最为抽象和最具有一般性的一种形态。抽象工厂可以向客户提供一个接口，使得客户可以在不必指定产品具体类型的情况下，创建多个产品族中的产品对象，强调的是“系列对象”的变化。
