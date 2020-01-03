@@ -10,7 +10,7 @@ package com.ymdx.dp.singleton;
  **/
 public class DoubleCheckLockSingleton {
 
-    private static DoubleCheckLockSingleton instance = null;
+    private volatile static DoubleCheckLockSingleton instance = null;
 
     private DoubleCheckLockSingleton(){}
 
