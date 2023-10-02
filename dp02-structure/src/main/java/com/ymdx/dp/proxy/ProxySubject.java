@@ -18,7 +18,7 @@ public class ProxySubject implements Subject {
 
     @Override
     public void request() {
-        this.breforeRequest();
+        this.beforeRequest();
         subject.request();
         this.afterRequest();
     }
@@ -29,7 +29,7 @@ public class ProxySubject implements Subject {
     }
 
     // 请求前的处理
-    private void breforeRequest() {
+    private void beforeRequest() {
         // 预处理
     }
 
